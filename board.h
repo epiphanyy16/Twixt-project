@@ -19,7 +19,7 @@ typedef struct Board{
 void board_init(Board *new_board);
 
 //checking if input from user is a valid position - returns 0/1/-1 based on owner
-int is_valid_position(position pos);
+int is_valid_position(Board *board, position pos, Player player);
 
 void place_peg(Board *board, position pos, Player player);
 

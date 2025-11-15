@@ -10,12 +10,12 @@ void board_init(Board *new_board){
 }
 
 //checking if input from user is a valid position
-int is_valid_position(position pos) {
-    if(pos.row <= BOARD_SIZE && pos.column <= BOARD_SIZE) { 
-        if(!(pos.row||pos.column))
+int is_valid_position(Board *board, position pos, Player player) {
+    if(pos.row < BOARD_SIZE && pos.column < BOARD_SIZE) { 
+        if(board->cell_grid[pos.row][pos.column].owner == none)
             return 1; //peg can be placed
-        if(pos.row||pos.column)
-            return -1; //peg can be removed
+        if(board->cell_grid[pos.row][pos.column].owner == player)
+            return -1; //if input position already has a peg from the same user, it may be removed.
     }
     return 0;
 }
@@ -32,13 +32,13 @@ void remove_peg(Board *board, position pos){
 void board_print(const Board *board){
     for(int i = 0; i < BOARD_SIZE; i++){
         for(int j = 0; j < BOARD_SIZE; j++){
-            if(board->cell_grid[j][i].owner == 0)
-
-            if(board->cell_grid[j][i].owner == 1)
-                printf("%c\t", );
-            if(board->cell_grid[j][i].owner == -1)
-            
-            printf("\n\n");
+            if(board->cell_grid[j][i].owner == none)
+                printf("o\t");
+            if(board->cell_grid[j][i].owner == player_red)
+                printf("O\t");  
+            if(board->cell_grid[j][i].owner == player_black)
+                printf("●\t");    
         }
+        printf("\n\n\n");
     }
 }

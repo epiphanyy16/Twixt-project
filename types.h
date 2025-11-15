@@ -1,7 +1,7 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-#define BOARD_SIZE 24
+#define BOARD_SIZE 10
 #define MAX_BRIDGES 2000
 
 //defining players to show cell ownership
@@ -18,8 +18,10 @@ typedef struct pos {
 } position;
 
 //to check if a given cell is occupied (and by who)
-typedef struct owner {
+typedef struct Cell {
     Player owner; //if a given cell is occupied by red, black, or none
+    position links[8];
+    int links_count;
 } Cell;
 
 //checking for bridges
