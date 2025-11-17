@@ -1,5 +1,10 @@
 #ifndef BOARD_H
 #define BOARD_H
+
+#define RED     "\033[31m"
+#define BLUE    "\033[34m"
+#define RESET   "\033[0m"
+
 /*what do we need to know about the board to print the board?
 BOARD_SIZE
 Cell: is a given cell occupied, if yes by which player
@@ -11,8 +16,8 @@ number of bridges*/
 //struct for all board data
 typedef struct Board{
     Cell cell_grid[BOARD_SIZE][BOARD_SIZE];
-    Bridge bridges[MAX_BRIDGES];
-    int bridge_count;
+    Link links[MAX_LINKS];
+    int link_count;
 } Board;
 
 //function to initialise empty board

@@ -2,7 +2,7 @@
 #define TYPES_H
 
 #define BOARD_SIZE 10
-#define MAX_BRIDGES 2000
+#define MAX_LINKS 2000
 
 //defining players to show cell ownership
 typedef enum player{
@@ -12,7 +12,7 @@ typedef enum player{
 } Player;
 
 //position on the board
-typedef struct pos {
+typedef struct position {
     int row;
     int column;
 } position;
@@ -20,23 +20,24 @@ typedef struct pos {
 //to check if a given cell is occupied (and by who)
 typedef struct Cell {
     Player owner; //if a given cell is occupied by red, black, or none
-    position links[8];
+    position connected_links[8]; //there can be maximum 8 links from any given cell
     int links_count;
 } Cell;
 
-//checking for bridges
-typedef struct bridge {
+//checking for links
+typedef struct link {
     position from;
     position to;
     Player owner;
-} Bridge;
+} Link;
 
 typedef enum status{
     ongoing = 1,
     red_wins = 2,
     black_wins = 3,
     draw = 4
-} gameStatus;
+} status;
+
 
 
 
